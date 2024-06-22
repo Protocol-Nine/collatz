@@ -13,7 +13,6 @@
 \title{Entropy Makes the Collatz Sequence Go Down}
 \author{Bradley Berg}
 \date{November 21, 2018, Edited June 18, 2024}
-\setlength{\jot}{1em}
 
 \begin{document}
 
@@ -57,7 +56,7 @@ The total gain of a series of transitions is the product of the gains for each t
 The choice of which path is taken is determined by the low order bit of the input value. If the sequence should produces uniformly randomized values then the chances of taking either transitions is 50:50. This implies the low bit would need to be uniformally random over the sequence. The average gain of a uniformly randomized sequence is then:
 
 \begin{align*}
-    \text{Average transaction gain} &= \langle \text{transaction gain} \rangle^p(\langle \text{transaction} \rangle) \\
+    \text{Average transaction gain} &= \langle \text{transaction gain} \rangle^{p(\langle \text{transaction} \rangle)} \\
     \text{Average odd gain} &= 1.5^{0.5} = 1.22474 \\
     \text{Average even gain} &= 0.5^{0.5} = 0.70711 \\
     \text{Average sequence gain:} \quad G_a &= 1.22474 \times 0.70711 = 0.86603+
