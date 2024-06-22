@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1719093496.48786 "c:/collatz/main.tex" "main.pdf" "main" 1719093498.04439 0
+["pdflatex"] 1719093625.71934 "c:/collatz/main.tex" "main.pdf" "main" 1719093627.10697 0
   "C:/Users/eslad/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1719093479 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/eslad/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1719093495 11548 2ade41684f14dab934e127a23fe2e513 ""
   "C:/Users/eslad/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1719093391 24264027 dd3e38bd79d8ba1b68618982f7290f43 ""
@@ -65,7 +65,7 @@
   "C:/Users/eslad/AppData/Local/Programs/MiKTeX/tex/latex/tools/multicol.sty" 1717270872 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "c:/collatz/main.tex" 1719091577 36357 ce0a5b1d4aed5ab2a9a508bf5a063af9 ""
   "images/collatz_even.png" 1719091576 41961 f9cc367a8963b5a284346fb00a26e8cb ""
-  "main.aux" 1719093497 1135 9e2c848ad69e9c79088a166fc8c2207c "pdflatex"
+  "main.aux" 1719093626 1135 9e2c848ad69e9c79088a166fc8c2207c "pdflatex"
   "main.tex" 1719091577 36357 ce0a5b1d4aed5ab2a9a508bf5a063af9 ""
   (generated)
   "main.aux"
