@@ -11,8 +11,7 @@
 
 %Paper Information
 \title{Entropy Makes the Collatz Sequence Go Down}
-\author{Bradley Berg}
-\date{November 21, 2018, Edited June 18, 2024}
+\author{Bradley Berg\\Edited by Erik Slader}
 
 \begin{document}
 
@@ -59,7 +58,7 @@
         \text{Average transaction gain}         & = \langle \text{transaction gain} \rangle^{p(\langle \text{transaction} \rangle)} \\
         \text{Average odd gain}                 & = 1.5^{0.5} = 1.22474                                                             \\
         \text{Average even gain}                & = 0.5^{0.5} = 0.70711                                                             \\
-        \text{Average sequence gain:} \quad G_a & = 1.22474 \times 0.70711 = 0.86603+
+        \text{Average sequence gain: } G_a & = 1.22474 \cdot 0.70711 = 0.86603+
     \end{align*}
 
     The statistical average gain in each step is less than one so on average the sequence declines. However, the gain in a single run for a given Seed can vary significantly. There could potentially still be a series where the the total gain indefinitely exceeds one and never terminates.
@@ -73,7 +72,7 @@
         \frac{0.40546}{-0.69315}                & = \frac{-(1-p)}{p}                            \\
         -0.58497                                & = -\frac{1-p}{p}                              \\
         -0.58497 - 1                            & = -\frac{1}{p}                                \\
-        p                                       & = \frac{1}{1.58497} \approx 0.63093           \\
+        p                                       & = \frac{1}{1.58497} \approx 0.63093
     \end{align*}
     \begin{align*}
         \text{Gain} & = 1.5^{0.63} \cdot 0.5^{0.37} \approx 0.99898 \quad \text{Under breaking even} \\
@@ -91,9 +90,9 @@
 
     Let \( k \) be the number of low order one bits and \( j \) is the input value with the low one bits removed plus 1.
 
-    The input to an odd chain has the form: \( j \times 2^k - 1 \)
+    The input to an odd chain has the form: \( j \cdot 2^k - 1 \)
 
-    The output of the chain simplifies to: \( j \times 3^k - 1 \)
+    The output of the chain simplifies to: \( j \cdot 3^k - 1 \)
 
     \begin{align*}
         N_1 & = \frac{3N + 1}{2}                 &  & \text{First transition}                \\
@@ -113,7 +112,7 @@
 
     Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, here are the first few chains for the series beginning with a seed of 27.
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|c|c|c|c|c|c|c|}
             \hline
@@ -147,22 +146,22 @@
 
     \subsection{Combining Even And Odd Chains}
 
-    Each run alternates between even and odd chains. We represent this algebraically by merging both into a single step. This gives us a series defined as a single transition. Since all intermediate values using this combined definition are even, an initial odd value needs to first transition one step using the "3*n + 1" rule to reach the first even number.
+    Each run alternates between even and odd chains. We represent this algebraically by merging both into a single step. This gives us a series defined as a single transition. Since all intermediate values using this combined definition are even, an initial odd value needs to first transition one step using the "3n + 1" rule to reach the first even number.
 
     Every input has the binary form: [$j$] [ones] [zeros]
     \[
-        N = ([j + 1] \times 2^{k_o} - 1) \times 2^{k_z} \rightarrow [j + 1] \times 3^{k_o} - 1
+        N = ([j + 1] \cdot 2^{k_o} - 1) \cdot 2^{k_z} \rightarrow [j + 1] \cdot 3^{k_o} - 1
     \]
     where:
     \begin{itemize}
         \item $k_z$ - number of trailing zeros in $N$
         \item $k_o$ - number of the next higher set of ones in $N$
-        \item $j$ - $N$ shifted right by $k_z + k_o$ bits: $N / 2^{k_z + k_o}$
+        \item $j$ - $N$ shifted right by $k_z + k_o$ bits: $\frac{N}{2^{k_z + k_o}}$
     \end{itemize}
 
     Using the previous example, initially we transition 27 to 82. From there the next few steps are:
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|c|c|c|c|c|}
             \hline
@@ -213,16 +212,16 @@
     \subsection{Losing Information}
     A Seed can be contrived to produce a run of any desired length. The longer the run, the larger the seed has to be in order to contain enough information to influence the desired outcome. Initially, as a run progresses, the information contained in the Seed is lost. When there are two possible ways to reach a value in a run we lose the information about which path was taken to reach it \cite{2}.
 
-    Odd numbers always transition $(3*n + 1)$ to even numbers, so an odd value can only be reached from one even value. However, certain even numbers can be reached from either an odd or even transition. For example, an output of 16 can be reached from either 32 or 5:
+    Odd numbers always transition 3n + 1 to even numbers, so an odd value can only be reached from one even value. However, certain even numbers can be reached from either an odd or even transition. For example, an output of 16 can be reached from either 32 or 5:
 
     \[
         \begin{aligned}
              & 32 \rightarrow 32 / 2 = 16 \\
-             & 5 \rightarrow 3*5 + 1 = 16
+             & 5 \rightarrow 3\cdot5 + 1 = 16
         \end{aligned}
     \]
 
-    Whenever transitioning to an even value such that $(\text{even} \% 3 = 1)$, then the previous value could have been either $2 \times \text{even}$ or $(\text{even} - 1) / 3$.
+    Whenever transitioning to an even value such that $(\text{even} \% 3 = 1)$, then the previous value could have been either $2 \cdot \text{even}$ or $(\text{even} - 1) / 3$.
 
     For Collatz, a bit of information contained in the seed is lost each time one of these select even numbers is reached. After all bits in the seed are scrubbed, this initial phase is complete. Any attempt to contrive a Seed to skew results can only directly affect values during this phase.
 
@@ -235,11 +234,11 @@
     We'll be using the combined series from section 1.2 for each randomization step. The value, $j$, is always even so the $[j + 1]$ term will simply set the low order bit to one as there is no carry. Also, the product will have an odd result so that decrementing by $1$ will likewise just clear the low order bit.
 
     \[
-        \text{Input: } ([j + 1] \times 2^{k_o} - 1) \times 2^{k_z}
+        \text{Input: } ([j + 1] \cdot 2^{k_o} - 1) \cdot 2^{k_z}
     \]
 
     \[
-        \text{Result: } [j + 1] \times 3^{k_o} - 1 = [j \oplus 1] \times 3^{k_o} \oplus 1
+        \text{Result: } [j + 1] \cdot 3^{k_o} - 1 = [j \oplus 1] \cdot 3^{k_o} \oplus 1
     \]
 
 
@@ -251,7 +250,7 @@
 
     In this next example, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
 
-    \begin{table*}
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|l|c|c|c|c|}
             \hline
@@ -287,7 +286,7 @@
 
     The product used to scramble values is equivalent to repeated sums of the input. The following table shows all combinations for the three inputs (A, B, Carry In) and the two outputs (Sum, Carry Out). It also shows changes (Exclusive Or) between the sum and inputs A and B:
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|c c c|c c|c c|}
             \hline
@@ -338,7 +337,7 @@
 
     To see the randomization in action, this trace lists entropy in the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         $$\textbf{Seed} = 4\_50449\_75045\_09599 = \#10\_00d1\_0da5\_de9f$$
         \begin{tabular}{|r|r|r|r|c|}
@@ -384,7 +383,7 @@
 
     If the hash function had a bias, it would show up by running it over many consecutive numbers. Here the hash was run over a million consecutive even numbers. This next chart shows the cumulative entropy of the resulting values, which is very near one as expected.
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -418,7 +417,7 @@
 
     This next chart shows a contorted sequence where some bits are artificially forced to one. This shows how skewed the operators have to get in order for entropy to drop below 0.94268, where it would increase indefinitely. 11 out of 20 bits are needed to be forced to one to sufficiently skew the result.
 
-    \begin{table*}[ht]
+    \begin{table*}[th]
         \centering
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -453,7 +452,7 @@
     \end{itemize}
     Any individual run is partitioned into three phases. In the initial phase the Seed value can influence the outcome to produce arbitrarily long runs. After that the series generates randomized values until it goes below the Seed value. From there it is guaranteed to reduce to one unless the series is circular.
     A uniformly randomized series eventually moves towards a statistically average gain. For a Collatz series to sustain an average gain above one would require over 1.7 times more odd transitions than even. This is well above parity. Instead, randomization forces the series to average out and decrease until it inevitably goes below the seed. Once it does that we know it will terminate.
-    The random behavior of the Collatz sequence makes it impossible to prove algebraically. Conway[5] showed that a generalization of the 3*N + 1 problem is undecidable. Trying to make sense of the values in the series is akin to analysing values produced by a random number generator. The irony is that this randomness is the force that leads to convergence.
+    The random behavior of the Collatz sequence makes it impossible to prove algebraically. Conway[5] showed that a generalization of the 3N + 1 problem is undecidable. Trying to make sense of the values in the series is akin to analysing values produced by a random number generator. The irony is that this randomness is the force that leads to convergence.
 
     \begin{thebibliography}{9}
         \bibitem{1}
