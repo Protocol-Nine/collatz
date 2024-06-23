@@ -8,6 +8,7 @@
 \usepackage{geometry}
 \geometry{letterpaper, portrait, margin=0.75in}
 \usepackage{multicol}
+\usepackage{wrapfig}
 
 %Paper Information
 \title{Entropy Makes the Collatz Sequence Go Down}
@@ -55,9 +56,9 @@
     The choice of which path is taken is determined by the low order bit of the input value. If the sequence should produces uniformly randomized values then the chances of taking either transitions is 50:50. This implies the low bit would need to be uniformally random over the sequence. The average gain of a uniformly randomized sequence is then:
 
     \begin{align*}
-        \text{Average transaction gain}         & = \langle \text{transaction gain} \rangle^{p(\langle \text{transaction} \rangle)} \\
-        \text{Average odd gain}                 & = 1.5^{0.5} = 1.22474                                                             \\
-        \text{Average even gain}                & = 0.5^{0.5} = 0.70711                                                             \\
+        \text{Average transaction gain}    & = \langle \text{transaction gain} \rangle^{p(\langle \text{transaction} \rangle)} \\
+        \text{Average odd gain}            & = 1.5^{0.5} = 1.22474                                                             \\
+        \text{Average even gain}           & = 0.5^{0.5} = 0.70711                                                             \\
         \text{Average sequence gain: } G_a & = 1.22474 \cdot 0.70711 = 0.86603+
     \end{align*}
 
@@ -112,7 +113,9 @@
 
     Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, here are the first few chains for the series beginning with a seed of 27.
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|l|c|c|c|c|r|}
             \hline
@@ -141,8 +144,7 @@
             $\to$ 263 $\to$ 395 $\to$ 593 $\to$ 890         &               & $\to$ 890    & 11         & 4          & 110111101\_0    \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     \subsection{Combining Even And Odd Chains}
 
@@ -161,7 +163,9 @@
 
     Using the previous example, initially we transition 27 to 82. From there the next few steps are:
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|l|c|c|c|r|}
             \hline
@@ -182,8 +186,7 @@
             $\to$ 593 $\to$ 1780 $\to$ 890   & 10         & 4           & 1           & 1010\_11110     \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     \section{Sequence Entropy}
 
@@ -216,13 +219,13 @@
 
     \[
         \begin{aligned}
-             & 32 \rightarrow 32 / 2 = 16 \\
+             & 32 \rightarrow 32 / 2 = 16     \\
              & 5 \rightarrow 3\cdot5 + 1 = 16
         \end{aligned}
     \]
 
-    Whenever transitioning to an even value such that $(\text{even} \% 3 = 1)$, then the previous value could have been either: 
-    
+    Whenever transitioning to an even value such that $(\text{even} \% 3 = 1)$, then the previous value could have been either:
+
     \[
         2 \cdot \text{even or } (\text{even} - 1) / 3
     \]
@@ -254,7 +257,9 @@
 
     In this next example, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|l|r|r|r|r|}
             \hline
@@ -271,8 +276,7 @@
             Xor 1          & 1000100010\_10  & 1100110\_1000   & 100110\_100     & 1110100        \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     A pseudo-random number generator repeatedly applies a function to produce a series of values. In order to produce uniformly random numbers, operators cannot be biased towards producing either more ones or zeros. In a uniform sequence, the entropy will be one. If it is not uniform, the bias will show up in the operators.
 
@@ -290,24 +294,26 @@
 
     The product used to scramble values is equivalent to repeated sums of the input. The following table shows all combinations for the three inputs (A, B, Carry In) and the two outputs (Sum, Carry Out). It also shows changes (Exclusive Or) between the sum and inputs A and B:
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|c c c|c c|c c|}
             \hline
-            \textbf{A} & \textbf{B} & \textbf{Carry In} & \textbf{Sum} & \textbf{Carry Out} & \textbf{A $\oplus$ Sum} & \textbf{B $\oplus$ Sum} \\
+            \textbf{A} & \textbf{B} & \textbf{Carry} & \textbf{Sum} & \textbf{Carry} & \textbf{A $\oplus$} & \textbf{B $\oplus$} \\
+                       &            & \textbf{In}    &              & \textbf{Out}   & \textbf{Sum}        & \textbf{Sum}        \\
             \hline
-            0          & 0          & 0                 & 0            & 0                  & 0                       & 0                       \\
-            0          & 0          & 1                 & 1            & 0                  & 1                       & 1                       \\
-            0          & 1          & 0                 & 1            & 0                  & 1                       & 0                       \\
-            0          & 1          & 1                 & 0            & 1                  & 0                       & 1                       \\
-            1          & 0          & 0                 & 1            & 0                  & 0                       & 1                       \\
-            1          & 0          & 1                 & 0            & 1                  & 1                       & 0                       \\
-            1          & 1          & 0                 & 0            & 1                  & 1                       & 1                       \\
-            1          & 1          & 1                 & 1            & 1                  & 0                       & 0                       \\
+            0          & 0          & 0              & 0            & 0              & 0                   & 0                   \\
+            0          & 0          & 1              & 1            & 0              & 1                   & 1                   \\
+            0          & 1          & 0              & 1            & 0              & 1                   & 0                   \\
+            0          & 1          & 1              & 0            & 1              & 0                   & 1                   \\
+            1          & 0          & 0              & 1            & 0              & 0                   & 1                   \\
+            1          & 0          & 1              & 0            & 1              & 1                   & 0                   \\
+            1          & 1          & 0              & 0            & 1              & 1                   & 1                   \\
+            1          & 1          & 1              & 1            & 1              & 0                   & 0                   \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     Input bits A and B are vertically aligned and are altered by addition. Carries are applied horizontally and propagate to higher order bits. This way, bits in both directions become scrambled.
 
@@ -341,53 +347,56 @@
 
     To see the randomization in action, this trace lists entropy in the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         $$\textbf{Seed} = 4\_50449\_75045\_09599 = \#10\_00d1\_0da5\_de9f$$
         \begin{tabular}{|r|r|r|r|c|}
             \hline
-            \textbf{Iteration} & \textbf{Entropy} & \textbf{Ones} & \textbf{Zeros} & \textbf{Notes}   \\
+            \textbf{Iteration} & \textbf{Entropy} & \textbf{Ones} & \textbf{Zeros} & \textbf{Notes} \\
             \hline
-            1                  & 0.99750          & 24            & 27             & Information \\
-            2                  & 0.99993          & 52            & 51             & Loss          \\
-            3                  & 0.99988          & 77            & 79             & phase 1                 \\
-            4                  & 0.99998          & 105           & 104            &                  \\
-            5                  & 0.99934          & 136           & 128            &                  \\
-            6                  & 0.99965          & 163           & 156            &                  \\
-            7                  & 0.99950          & 194           & 184            &                  \\
-            8                  & 0.99986          & 222           & 216            &                  \\
-            9                  & 0.99999          & 250           & 248            &                  \\
-            10                 & 0.99994          & 281           & 276            &                  \\
-            11                 & 0.99973          & 314           & 302            &                  \\
-            12                 & 0.99984          & 342           & 332            &                  \\
-            13                 & 0.99993          & 369           & 362            &                  \\
-            14                 & 0.99966          & 402           & 385            &                  \\
-            15                 & 0.99983          & 428           & 415            &                  \\
-            16                 & 0.99989          & 456           & 445            &                  \\
-            17                 & 0.99982          & 487           & 472            &                  \\
-            18                 & 0.99975          & 518           & 499            &                  \\
-            19                 & 0.99988          & 545           & 531            &                  \\
+            1                  & 0.99750          & 24            & 27             & Information    \\
+            2                  & 0.99993          & 52            & 51             & Loss           \\
+            3                  & 0.99988          & 77            & 79             & phase 1        \\
+            4                  & 0.99998          & 105           & 104            &                \\
+            5                  & 0.99934          & 136           & 128            &                \\
+            6                  & 0.99965          & 163           & 156            &                \\
+            7                  & 0.99950          & 194           & 184            &                \\
+            8                  & 0.99986          & 222           & 216            &                \\
+            9                  & 0.99999          & 250           & 248            &                \\
+            10                 & 0.99994          & 281           & 276            &                \\
+            11                 & 0.99973          & 314           & 302            &                \\
+            12                 & 0.99984          & 342           & 332            &                \\
+            13                 & 0.99993          & 369           & 362            &                \\
+            14                 & 0.99966          & 402           & 385            &                \\
+            15                 & 0.99983          & 428           & 415            &                \\
+            16                 & 0.99989          & 456           & 445            &                \\
+            17                 & 0.99982          & 487           & 472            &                \\
+            18                 & 0.99975          & 518           & 499            &                \\
+            19                 & 0.99988          & 545           & 531            &                \\
             \hline
-            20                 & 0.99920          & 31            & 29             & Random-    \\
-            30                 & 1.00000          & 321           & 321            & ization          \\
-            40                 & 0.99978          & 606           & 585            & phase 2                 \\
-            50                 & 0.99966          & 899           & 861            &                  \\
-            60                 & 0.99983          & 1192          & 1156           &                  \\
-            70                 & 0.99969          & 1489          & 1429           &                  \\
-            80                 & 0.99996          & 1770          & 1744           &                  \\
-            90                 & 0.99963          & 2105          & 2012           &                  \\
-            100                & 0.99967          & 2410          & 2309           &                  \\
-            110                & 0.99876          & 2772          & 2551           &                  \\
-            120                & 0.99828          & 3105          & 2816           &                  \\
-            130                & 0.99890          & 3387          & 3133           &                  \\
+            20                 & 0.99920          & 31            & 29             & Random-        \\
+            30                 & 1.00000          & 321           & 321            & ization        \\
+            40                 & 0.99978          & 606           & 585            & phase 2        \\
+            50                 & 0.99966          & 899           & 861            &                \\
+            60                 & 0.99983          & 1192          & 1156           &                \\
+            70                 & 0.99969          & 1489          & 1429           &                \\
+            80                 & 0.99996          & 1770          & 1744           &                \\
+            90                 & 0.99963          & 2105          & 2012           &                \\
+            100                & 0.99967          & 2410          & 2309           &                \\
+            110                & 0.99876          & 2772          & 2551           &                \\
+            120                & 0.99828          & 3105          & 2816           &                \\
+            130                & 0.99890          & 3387          & 3133           &                \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     If the hash function had a bias, it would show up by running it over many consecutive numbers. Here the hash was run over a million consecutive even numbers. This next chart shows the cumulative entropy of the resulting values, which is very near one as expected.
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -416,12 +425,13 @@
             1,048,576          & 1.00000          & 11,012,891    & 11,007,205     \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     This next chart shows a contorted sequence where some bits are artificially forced to one. This shows how skewed the operators have to get in order for entropy to drop below 0.94268, where it would increase indefinitely. 11 out of 20 bits are needed to be forced to one to sufficiently skew the result.
 
-    \begin{table*}[th]
+    \noindent
+    \begin{minipage}{\columnwidth}
+        \setlength{\tabcolsep}{.35\tabcolsep}
         \centering
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -442,8 +452,7 @@
             177,740              & 0.94266          & 14,093,550    & 7,926,546      \\
             \hline
         \end{tabular}
-        \caption{}
-    \end{table*}
+    \end{minipage}
 
     \section{Conclusion}
 
