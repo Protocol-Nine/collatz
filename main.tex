@@ -280,6 +280,7 @@ This next phase is key as this is where the sequence runs below the Seed. The se
 
 We'll be using the combined series from section 1.2 for each randomization step. The value, $j$, is always even so the $[j + 1]$ term will simply set the low order bit to one as there is no carry. Also, the product will have an odd result so that decrementing by $1$ will likewise just clear the low order bit.
 
+
 \[
     \text{Input: } ([j + 1] \cdot 2^{k_o} - 1) \cdot 2^{k_z}
 \]
@@ -287,7 +288,6 @@ We'll be using the combined series from section 1.2 for each randomization step.
 \[
     \text{Result: } [j + 1] \cdot 3^{k_o} - 1 = [j \oplus 1] \cdot 3^{k_o} \oplus 1
 \]
-
 
 
 \begin{figure} [ht]
@@ -298,7 +298,8 @@ We'll be using the combined series from section 1.2 for each randomization step.
     \label{fig-1}
 \end{figure}
 
-\newpage
+
+
 
 In this next example, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
 
@@ -562,9 +563,6 @@ The random behavior of the Collatz sequence makes it impossible to prove algebra
     \newblock In \emph{Proc. 1972 Number Theory Conf., Univ. Colorado, Boulder. pp. 49-52.}
 
 \end{thebibliography}
-
-\newpage
-\newpage
 
 \appendix
 \section{Appendix}
