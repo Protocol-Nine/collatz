@@ -152,7 +152,7 @@ The output of the chain simplifies to: \( j \cdot 3^k - 1 \)
 
 Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, here are the first few chains for the series beginning with a seed of 27.
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|l|c|c|c|c|}
             \hline
@@ -203,7 +203,7 @@ where:
 
 Using the previous example, initially we transition 27 to 82. From there the next few steps are:
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|l|c|c|c|r|}
             \hline
@@ -291,7 +291,7 @@ We'll be using the combined series from section 1.2 for each randomization step.
 
 
 
-\begin{figure}
+\begin{figure} [ht]
     \begin{center}
         \includegraphics[width=\columnwidth]{collatz_even}
     \end{center}
@@ -303,7 +303,7 @@ We'll be using the combined series from section 1.2 for each randomization step.
 
 In this next example, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|l|r|r|}
             \hline
@@ -354,7 +354,7 @@ The product of a random variable by a constant is also random, but with a larger
 
 The product used to scramble values is equivalent to repeated sums of the input. The following table shows all combinations for the three inputs (A, B, Carry In) and the two outputs (Sum, Carry Out). It also shows changes (Exclusive Or) between the sum and inputs A and B:
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|c c c|c c|c c|}
             \hline
@@ -408,7 +408,7 @@ To compute the entropy, the low-order zero bit is discarded as it is fixed. Also
 
 To see the randomization in action, this trace lists entropy in the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         $$\textbf{Seed} = 4\_50449\_75045\_09599 = 10\_00\text{d}1\_0\text{da}5\_\text{de}9\text{f}_{\text{base} 16}$$
         \begin{tabular}{|r|r|r|r|c|}
@@ -456,7 +456,7 @@ To see the randomization in action, this trace lists entropy in the first two ph
 
 If the hash function had a bias, it would show up by running it over many consecutive numbers. Here the hash was run over a million consecutive even numbers. This next chart shows the cumulative entropy of the resulting values, which is very near one as expected.
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -492,7 +492,7 @@ If the hash function had a bias, it would show up by running it over many consec
 
 This next chart shows a contorted sequence where some bits are artificially forced to one. This shows how skewed the operators have to get in order for entropy to drop below 0.94268, where it would increase indefinitely. 11 out of 20 bits are needed to be forced to one to sufficiently skew the result.
 
-\begin{table}
+\begin{table} [ht]
     \begin{center}
         \begin{tabular}{|c|c|c|c|}
             \hline
@@ -563,6 +563,9 @@ The random behavior of the Collatz sequence makes it impossible to prove algebra
     \newblock In \emph{Proc. 1972 Number Theory Conf., Univ. Colorado, Boulder. pp. 49-52.}
 
 \end{thebibliography}
+
+\newpage
+\newpage
 
 \appendix
 \section{Appendix}
