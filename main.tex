@@ -285,7 +285,7 @@ For Collatz, a bit of information contained in the seed is lost each time one of
 
 One-way hash functions rely on this concept of lost information \cite{3}. Secure hashes have many ways to reach each hashed value. This is how passwords are encoded and used for authentication. Using this metaphor, you can think of the Seed as a password and the Collatz sequence as a trivial one-way hash schema used to mask it.
 
-\subsection{RandomizationPhase}
+\subsection{Randomization Phase}
 
 This next phase is key as this is where the sequence runs below the Seed. The sequence is rewritten as a pseudo random number (PRNG) generator. Hastad et al. (1999) \cite{4} show that any one-way hash can be used to create a PRNG. Uniformly randomized values eventually trend towards their average. In turn, this drives transitions towards their average gain. In the introduction, we showed that Collatz has an average gain of $0.86603$, eventually driving the series below the Seed value.
 
