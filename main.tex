@@ -414,6 +414,8 @@ Next, starting with the next higher Seed, \( M + 1 \), we transition until it re
 
 When measuring the length of a run, including this phase is not useful and can distort any result. When winding down as numbers get smaller, they can become more irregular. Instead of defining the run length as the number of steps to one, use only the number of odd steps until the series goes below the Seed. It is usually more practical to count only odd steps because it corresponds to the number of terms in the algebraic expansion of a run.
 
+\newpage
+
 \subsection{Observed Entropy}
 
 The first few values will have lower entropy until enough bits are included to average out. In the Introduction, we've shown that to sustain an infinite run there needs to be 64\% or more ones. This gives an entropy of:
@@ -425,10 +427,11 @@ Individual runs will typically have some jitter since we are performing discrete
 To compute the entropy, the low-order zero bit is discarded as it is fixed. Also, since the values have a variable width, the uppermost bit where one is also discarded. This differs from practical PRNGs where the values have a fixed width.
 
 To see the randomization in action, Table \ref{table:exampleOfEntropyInARun} lists the entropy for the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
-
+\vspace{5px}
+$$\textbf{Seed} = 4\_50449\_75045\_09599 = 10\_00\text{d}1\_0\text{da}5\_\text{de}9\text{f}_{\text{base} 16}$$
 \begin{table} [ht]
     \begin{center}
-        $$\textbf{Seed} = 4\_50449\_75045\_09599 = 10\_00\text{d}1\_0\text{da}5\_\text{de}9\text{f}_{\text{base} 16}$$
+        
         \begin{tabular}{|r|r|r|r|c|}
             \hline
             \textbf{Step} & \textbf{Entropy} & \textbf{Ones} & \textbf{Zeros} & \textbf{Notes} \\
