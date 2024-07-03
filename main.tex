@@ -290,6 +290,7 @@ We'll be using the combined series from section 1.2 for each randomization step.
     \text{Result: } [j + 1] \cdot 3^{k_o} - 1 = [j \oplus 1] \cdot 3^{k_o} \oplus 1
 \]
 
+\vspace{9px}
 
 \begin{figure} [ht]
     \begin{center}
@@ -340,15 +341,21 @@ In Table \ref{table:hashFunctionExampleInBinary}, the top line has steps for a r
 \end{table}
 
 A pseudo-random number generator shown in Figure \ref{figure:sequenceRedefined} repeatedly applies a function to produce a series of values. In order to produce uniformly random numbers, operators cannot be biased towards producing either more ones or zeros. In a uniform sequence, the entropy will be one. If it is not uniform, the bias will show up in the operators.
-w
+
+\vspace{9px}
+\noindent
 \textbf{Select}
 
 If you remove some low-order bits of a random number, the remaining part will still be random. Using the upper bits from the input still gives random values. However, the way the value is split, the selected upper value will be even. The low-order bit is zero, and only the other bits are a randomized portion.
 
+\vspace{9px}
+\noindent
 \textbf{Logical Exclusive Or 1}
 
 The first Exclusive Or sets the low bit of the selected region. This is balanced out by clearing it in the final step with another Exclusive.
 
+\vspace{9px}
+\noindent
 \textbf{Product}
 
 The product of a random variable by a constant is also random, but with a larger gap between them. Multiplying random numbers from 1 to 10 by 3 yields random numbers from 3 to 30. They simply have a gap of 3 between them instead of 1.
@@ -567,6 +574,8 @@ The random behavior of the Collatz sequence makes it impossible to prove algebra
 
 \end{thebibliography}
 
+
+
 \appendix
 \section{Appendix}
 
@@ -614,12 +623,5 @@ Entropy is computed from values in each run. Since at the end of each step the v
         \label{table:appendix}
     \end{center}
 \end{table*}
-
-%\acks
-
-%Acknowledgments, if needed.
-
-
-
 
 \end{document}
