@@ -21,6 +21,15 @@
 \usepackage{amsmath}
 \usepackage{graphicx} %LaTeX package to import graphics
 \graphicspath{{images/}} %configuring the graphicx package
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 
 \begin{document}
 
@@ -528,26 +537,26 @@ This is the text of the appendix, if you need one.
     Behrouz Zolfaghari, Khodakhast Bibak, and Takeshi Koshiba.
     \newblock The Odyssey of Entropy: Cryptography
     \newblock In \emph{Entropy} 2022, 24(2), 266.
-    %\\https://www.mdpi.com/1099-4300/24/2/266/pdf
+    \newline \url{https://www.mdpi.com/1099-4300/24/2/266/pdf}
 
     \bibitem[2]{2}
     John C. Baez, Tobias Fritz, Tom Leinster.
     \newblock A Characterization of Entropy in Terms of Information Loss
     \newblock In \emph{Entropy} 2011, 13(11), 1945-1957
-    %\\https://mdpi-res.com/d_attachment/entropy/entropy-13-01945/article_deploy/entropy-13-01945-v2.pdf
+    \newline \url{https://mdpi-res.com/d_attachment/entropy/entropy-13-01945/article_deploy/entropy-13-01945-v2.pdf}
 
     \bibitem[3]{3}
     Russell Impagliazzo, Leonid A. Levin, Michael Luby.
     \newblock Pseudo-random Generation from one-way functions"
     \newblock In \emph{David S. Johnson (ed.),Proceedings of the 21st Annual ACM Symposium on Theory of Computing}, May 14-17, 1989, Seattle, Washington, USA, {ACM} pp. 12-24,
-    %doi:10.1145/73007.73009, S2CID 18587852
-    %\\https://dl.acm.org/doi/pdf/10.1145/73007.73009
+    \newline doi:10.1145/73007.73009, S2CID 18587852
+    \newline \url{https://dl.acm.org/doi/pdf/10.1145/73007.73009}
 
     \bibitem[4]{4}
     Johan Hastad, Russell Impagliazzo, Leonid A. Levin, Michael Luby.
     \newblock A pseudorandom generator from any one-way function. 
     \newblock In \emph{Siam Journal on Computation 28(4):1364-1396}, 1999.
-    %\\https://epubs.siam.org/doi/10.1137/S0097539793244708
+    \newline \url{https://epubs.siam.org/doi/10.1137/S0097539793244708}
 
     \bibitem[5]{5}
     John H. Conway.
