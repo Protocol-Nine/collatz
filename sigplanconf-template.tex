@@ -60,7 +60,6 @@
 
 \begin{abstract}
     We look at the Collatz Sequence from an information theory perspective to lay out its underlying computational mechanics. The mechanisms are similar to those used in pseudo random number generators and one way hashes.
-    An individual run is divided into three phases.  In the first phase the influence of the seed runs its course after information contained in the initial seed is lost.  Values are randomized in the second phase.  They follow the statistical model where the average gain is just over 0.866; causing them to decline.  The third phase begins once a value goes below the seed; providing that the series is not circular.  At this point we know the run will terminate at one.
     An equivalent restatement of the Collatz sequence steps through alternating chains of even and odd values.  This variation constitutes a pseudo random number generator.  The operations used to scramble values are unbiased which results in an even distibution of ones and zeros.  The entropy of this mechanism is high so that in the second phase values are fairly randomized.
 \end{abstract}
 
@@ -120,6 +119,8 @@ The statistical average gain in each step is less than one so on average the seq
 \end{align*}
 
 For any series of values to continually increase and never terminate it would have to sustain an average gain over one. To break even odd transitions would need to occur about 64\% of the time. They would need to be applied over 1.7 times more than evens; which is substantially skewed. It remains to be shown that the sequence does not intrinsically favor odd transitions.
+
+\newpage
 
 \subsection{Even and Odd Chains}
 
@@ -208,13 +209,13 @@ Using the previous example, initially we transition 27 to 82. From there the nex
             \hline
                                              & \textbf{j} & \textbf{ko} & \textbf{kz} & \textbf{binary} \\
             \hline
-            82 $\to$ 41  $\to$  124 $\to$ 62 & 20         & 1           & 2           & 10100\_10       \\
+            \text{  }82 $\to$ 41  $\to$  124 $\to$ 62 & 20         & 1           & 2           & 10100\_10       \\
             \hline
-            31  $\to$  484 $\to$ 242         & 0          & 5           & 1           & 0\_111110       \\
+            \text{  }31  $\to$  484 $\to$ 242         & 0          & 5           & 1           & 0\_111110       \\
             \hline
             121 $\to$  364 $\to$ 182         & 60         & 1           & 1           & 111100\_10      \\
             \hline
-            91 $\to$  274 $\to$ 206          & 22         & 2           & 1           & 10110\_110      \\
+            \text{  }91 $\to$  274 $\to$ 206          & 22         & 2           & 1           & 10110\_110      \\
             \hline
             103 $\to$  310 $\to$ 466         & 12         & 3           & 1           & 1100\_1110      \\
             \hline
