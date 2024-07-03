@@ -31,8 +31,8 @@
 \begin{document}
 
 %\conferenceinfo{WXYZ '05}{date, City.} 
-%\copyrightyear{2005} 
-%\copyrightdata{[to be supplied]} 
+%\copyrightyear{2024} 
+%\copyrightdata{Copyright Bradley A. Berg, all Rights Reserved.} 
 
 %\titlebanner{banner above paper title}        % These are ignored unless
 %\preprintfooter{short description of paper}   % 'preprint' option specified.
@@ -149,7 +149,7 @@ The output of the chain simplifies to: \( j \cdot 3^k - 1 \)
     N_k     & = 3^k \cdot j - 1                                            &  & \text{Odd chain output}
 \end{align*}
 
-Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, here are the first few chains for the series beginning with a seed of 27.
+Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, Table \ref{table:partialSyracuseRun} lists the first few chains for the series beginning with a seed of 27.
 
 \begin{table} [ht]
     \begin{center}
@@ -181,7 +181,7 @@ Each run of the Collatz sequence will have segments with alternating even and od
             \hline
         \end{tabular}
         \caption{Partial Syracuse Run Seed = 27}
-        \label{tab-1}
+        \label{table:partialSyracuseRun}
     \end{center}
 \end{table}
 
@@ -200,7 +200,7 @@ where:
     \item $j$ - $N$ shifted right by $k_z + k_o$ bits: $\frac{N}{2^{k_z + k_o}}$
 \end{itemize}
 
-Using the previous example, initially we transition 27 to 82. From there the next few steps are:
+Using the previous example, initially we transition 27 to 82. From there the next few steps are in Table \ref{table:combinedEvenAndOddChains}.
 
 \begin{table} [ht]
     \begin{center}
@@ -224,7 +224,7 @@ Using the previous example, initially we transition 27 to 82. From there the nex
             \hline
         \end{tabular}
         \caption{Combined Even And Odd Chains}
-        \label{tab-2}
+        \label{table:combinedEvenAndOddChains}
     \end{center}
 \end{table}
 
@@ -295,13 +295,13 @@ We'll be using the combined series from section 1.2 for each randomization step.
         \includegraphics[width=\columnwidth]{collatz_even}
     \end{center}
     \caption{Sequence Redefined As A Hash Function}
-    \label{fig-1}
+    \label{figure:sequenceRedefined}
 \end{figure}
 
 
 
 
-In this next example, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
+In Table \ref{table:hashFunctionExampleInBinary}, the top line has steps for a randomization phase that begins with $647$. Calculations for each combined transition ($1942, 2186, 1640, 308, 116$) are shown in binary:
 
 \begin{table} [ht]
     \begin{center}
@@ -334,12 +334,12 @@ In this next example, the top line has steps for a randomization phase that begi
             \hline
         \end{tabular}
         \caption{Hash Function Example In Binary}
-        \label{tab-3}
+        \label{table:hashFunctionExampleInBinary}
     \end{center}
 \end{table}
 
-A pseudo-random number generator repeatedly applies a function to produce a series of values. In order to produce uniformly random numbers, operators cannot be biased towards producing either more ones or zeros. In a uniform sequence, the entropy will be one. If it is not uniform, the bias will show up in the operators.
-
+A pseudo-random number generator shown in Figure \ref{figure:sequenceRedefined} repeatedly applies a function to produce a series of values. In order to produce uniformly random numbers, operators cannot be biased towards producing either more ones or zeros. In a uniform sequence, the entropy will be one. If it is not uniform, the bias will show up in the operators.
+w
 \textbf{Select}
 
 If you remove some low-order bits of a random number, the remaining part will still be random. Using the upper bits from the input still gives random values. However, the way the value is split, the selected upper value will be even. The low-order bit is zero, and only the other bits are a randomized portion.
@@ -352,7 +352,7 @@ The first Exclusive Or sets the low bit of the selected region. This is balanced
 
 The product of a random variable by a constant is also random, but with a larger gap between them. Multiplying random numbers from 1 to 10 by 3 yields random numbers from 3 to 30. They simply have a gap of 3 between them instead of 1.
 
-The product used to scramble values is equivalent to repeated sums of the input. The following table shows all combinations for the three inputs (A, B, Carry In) and the two outputs (Sum, Carry Out). It also shows changes (Exclusive Or) between the sum and inputs A and B:
+The product used to scramble values is equivalent to repeated sums of the input. Table \ref{table:bitwiseAddition} shows all combinations for the three inputs (A, B, Carry In) and the two outputs (Sum, Carry Out). It also shows changes (Exclusive Or) between the sum and inputs A and B:
 
 \begin{table} [ht]
     \begin{center}
@@ -372,7 +372,7 @@ The product used to scramble values is equivalent to repeated sums of the input.
             \hline
         \end{tabular}
         \caption{Bitwise Addition}
-        \label{tab-4}
+        \label{table:bitwiseAddition}
     \end{center}
 \end{table}
 
@@ -406,7 +406,7 @@ Individual runs will typically have some jitter since we are performing discrete
 
 To compute the entropy, the low-order zero bit is discarded as it is fixed. Also, since the values have a variable width, the uppermost bit where one is also discarded. This differs from practical PRNGs where the values have a fixed width.
 
-To see the randomization in action, this trace lists entropy in the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
+To see the randomization in action, Table \ref{table:exampleOfEntropyInARun} lists the entropy for the first two phases. Entropy is computed using the accumulated number of ones and zeros in the run. The counts of ones and zeros are reset at the start of the Randomization phase so that those computations are completely separate. Even in the Information Loss phase, entropy is well above the 0.94268 bound right out of the gate. The computed length of the Information Loss phase is quite conservative.
 
 \begin{table} [ht]
     \begin{center}
@@ -450,13 +450,13 @@ To see the randomization in action, this trace lists entropy in the first two ph
             \hline
         \end{tabular}
         \caption{Example Of Entropy In A Run}
-        \label{tab-5}
+        \label{table:exampleOfEntropyInARun}
     \end{center}
 \end{table}
 
 \newpage
 
-If the hash function had a bias, it would show up by running it over many consecutive numbers. Here the hash was run over a million consecutive even numbers. This next chart shows the cumulative entropy of the resulting values, which is very near one as expected.
+If the hash function had a bias, it would show up by running it over many consecutive numbers. Here the hash was run over a million consecutive even numbers. Table \ref{table:entropyOfTheHashFunction} shows the cumulative entropy of the resulting values, which is very near one as expected.
 
 \begin{table} [ht]
     \begin{center}
@@ -488,11 +488,11 @@ If the hash function had a bias, it would show up by running it over many consec
             \hline
         \end{tabular}
         \caption{Entropy Of The Hash Function}
-        \label{tab-6}
+        \label{table:entropyOfTheHashFunction}
     \end{center}
 \end{table}
 
-This next chart shows a contorted sequence where some bits are artificially forced to one. This shows how skewed the operators have to get in order for entropy to drop below 0.94268, where it would increase indefinitely. 11 out of 20 bits are needed to be forced to one to sufficiently skew the result.
+Table \ref{table:entropyOfAContortedHashFunction} illustrates a contorted sequence where some bits are artificially forced to one. This shows how skewed the operators have to get in order for entropy to drop below 0.94268, where it would increase indefinitely. 11 out of 20 bits are needed to be forced to one to sufficiently skew the result.
 
 \begin{table} [ht]
     \begin{center}
@@ -516,7 +516,7 @@ This next chart shows a contorted sequence where some bits are artificially forc
             \hline
         \end{tabular}
         \caption{Entropy Of A Contorted Hash Function}
-        \label{tab-7}
+        \label{table:entropyOfAContortedHashFunction}
     \end{center}
 \end{table}
 
@@ -610,7 +610,7 @@ Entropy is computed from values in each run. Since at the end of each step the v
             335             & 2\_61309\_34783   & 0.99950          & 114             & 475          & 5\_68559\_52882\_94911 & 0.99948          & 174             \\
             \hline
         \end{tabular}
-        \label{tab-8}
+        \label{table:appendix}
     \end{center}
 \end{table*}
 
@@ -622,4 +622,3 @@ Entropy is computed from values in each run. Since at the end of each step the v
 
 
 \end{document}
-
