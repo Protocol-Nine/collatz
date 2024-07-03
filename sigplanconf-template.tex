@@ -207,21 +207,21 @@ Using the previous example, initially we transition 27 to 82. From there the nex
     \begin{center}
         \begin{tabular}{|l|c|c|c|r|}
             \hline
-                                             & \textbf{j} & \textbf{ko} & \textbf{kz} & \textbf{binary} \\
+                                                      & \textbf{j} & \textbf{ko} & \textbf{kz} & \textbf{binary} \\
             \hline
             \text{  }82 $\to$ 41  $\to$  124 $\to$ 62 & 20         & 1           & 2           & 10100\_10       \\
             \hline
             \text{  }31  $\to$  484 $\to$ 242         & 0          & 5           & 1           & 0\_111110       \\
             \hline
-            121 $\to$  364 $\to$ 182         & 60         & 1           & 1           & 111100\_10      \\
+            121 $\to$  364 $\to$ 182                  & 60         & 1           & 1           & 111100\_10      \\
             \hline
             \text{  }91 $\to$  274 $\to$ 206          & 22         & 2           & 1           & 10110\_110      \\
             \hline
-            103 $\to$  310 $\to$ 466         & 12         & 3           & 1           & 1100\_1110      \\
+            103 $\to$  310 $\to$ 466                  & 12         & 3           & 1           & 1100\_1110      \\
             \hline
-            233 $\to$  700 $\to$ 350         & 116        & 1           & 1           & 1110100\_10     \\
+            233 $\to$  700 $\to$ 350                  & 116        & 1           & 1           & 1110100\_10     \\
             \hline
-            593 $\to$ 1780 $\to$ 890         & 10         & 4           & 1           & 1010\_11110     \\
+            593 $\to$ 1780 $\to$ 890                  & 10         & 4           & 1           & 1010\_11110     \\
             \hline
         \end{tabular}
         \caption{Table 2}
@@ -305,19 +305,32 @@ In this next example, the top line has steps for a randomization phase that begi
 
 \begin{table}
     \begin{center}
-        \begin{tabular}{|l|r|r|r|r|}
+        \begin{tabular}{|l|r|r|}
             \hline
-                           & \textbf{$1942$} & \textbf{$2186$} & \textbf{$1640$} & \textbf{$116$} \\
+                           & \textbf{1942}  & \textbf{2186}  \\
             \hline
-            Input          & 11110010\_110   & 1000100010\_10  & 1100110\_1000   & 100110\_100    \\
+            Input          & 11110010\_110  & 1000100010\_10 \\
             \hline
-            Shift Right    & 11110010        & 1000100010      & 1100110         & 100110         \\
+            Shift Right    & 11110010       & 1000100010     \\
             \hline
-            Xor 1          & 11110011        & 1000100011      & 1100111         & 100111         \\
+            Xor 1          & 11110011       & 1000100011     \\
             \hline
-            Times $3^{ko}$ & 100010001011    & 11001101001     & 100110101       & 1110101        \\
+            Times $3^{ko}$ & 100010001011   & 11001101001    \\
             \hline
-            Xor 1          & 1000100010\_10  & 1100110\_1000   & 100110\_100     & 1110100        \\
+            Xor 1          & 1000100010\_10 & 1100110\_1000  \\
+            \hline
+                           &                &                \\
+                           & \textbf{1640}  & \textbf{116}   \\
+            \hline
+            Input          & 1100110\_1000  & 100110\_100    \\
+            \hline
+            Shift Right    & 1100110        & 100110         \\
+            \hline
+            Xor 1          & 1100111        & 100111         \\
+            \hline
+            Times $3^{ko}$ & 100110101      & 1110101        \\
+            \hline
+            Xor 1          & 100110\_100    & 1110100        \\
             \hline
         \end{tabular}
         \caption{Table 3}
