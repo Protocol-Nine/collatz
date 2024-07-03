@@ -576,8 +576,6 @@
   \def \@toappear {#1}}
 
 \toappear{%
-  \noindent \@permission \par
-  \vspace{2pt}
   \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
   \noindent Copyright \copyright\ \@copyrightyear\ \@copyrightdata \par}
 

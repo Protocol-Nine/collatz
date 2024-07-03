@@ -74,6 +74,8 @@ The computational mechanics of the Collatz sequence are analyzed to determine th
     \text{N is Odd:}  & \quad N' = \frac{3N + 1}{2}
 \end{align*}
 
+\vspace{9px}
+
 The gain of a each transition is its Output divided by the Input (N' / N). As N gets larger in the odd transition the "+ 1" term quickly becomes insignificant. To compute the gain for the odd transition in the limit we can safely drop the "+1"term.
 
 \begin{center}
@@ -100,6 +102,8 @@ The choice of which path is taken is determined by the low order bit of the inpu
     \text{Average sequence gain: } G_a & = 1.22474 \cdot 0.70711 = 0.86603+
 \end{align*}
 
+\vspace{9px}
+
 The statistical average gain in each step is less than one so on average the sequence declines. However, the gain in a single run for a given Seed can vary significantly. There could potentially still be a series where the the total gain indefinitely exceeds one and never terminates.
 
 \begin{align*}
@@ -118,6 +122,8 @@ The statistical average gain in each step is less than one so on average the seq
     \\
     \text{Gain} & = 1.5^{0.64} \cdot 0.5^{0.36} \approx 1.01001 \quad \text{Over breaking even}
 \end{align*}
+
+\vspace{9px}
 
 For any series of values to continually increase and never terminate it would have to sustain an average gain over one. To break even odd transitions would need to occur about 64\% of the time. They would need to be applied over 1.7 times more than evens; which is substantially skewed. It remains to be shown that the sequence does not intrinsically favor odd transitions.
 
@@ -150,6 +156,8 @@ The output of the chain simplifies to: \( j \cdot 3^k - 1 \)
             & = 3^{i+1} \cdot j \cdot 2^{k-i-1} - 1                                                           \\
     N_k     & = 3^k \cdot j - 1                                            &  & \text{Odd chain output}
 \end{align*}
+
+\vspace{9px}
 
 Each run of the Collatz sequence will have segments with alternating even and odd chains. For reference, Table \ref{table:partialSyracuseRun} lists the first few chains for the series beginning with a seed of 27.
 
@@ -243,6 +251,7 @@ where:
     \item $p0$ is the probability a bit is zero.
     \item $p1$ is the probability a bit is one ($1 - p0$).
 \end{itemize}
+
 
 A set of coin tosses has $p0 = p1 = 0.5$ so its entropy is 1; totally random. When looking at the entropy of bits in a number then $p0$ is the percentage of zero bits. For the binary number, $1010\_1111$, $p0$ is $0.25$ ($H = 0.811$). Strings of all ones or zeros have no entropy ($H = 0$). For a binary number, we are measuring the bits in a number horizontally.
 
@@ -584,7 +593,7 @@ Here are the entropy values for the randomization phase of some long runs. The S
 
 Entropy is computed from values in each run. Since at the end of each step the values are all even, the low order bit is discarded. Values also have variable widths; unlike values in a practical PRNG. To account for this the upper one bit is also discarded. The entropy is then computed using the total number of ones and zeros in each run. To illustrate this the chart shows the entropy after five steps into the randomization phase.
 
-\begin{table*}
+\begin{table*} [t]
     \begin{center}
         \begin{tabular}{|c r c c| c r c c|}
             \hline
@@ -624,5 +633,7 @@ Entropy is computed from values in each run. Since at the end of each step the v
         \label{table:appendix}
     \end{center}
 \end{table*}
+
+\vspace{14cm}
 
 \end{document}
