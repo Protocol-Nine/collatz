@@ -216,7 +216,7 @@ Using the previous example, initially we transition 27 to 82. From there the nex
     \begin{center}
         \begin{tabular}{|l|c|c|c|r|}
             \hline
-                                                        & \textbf{j} & \textbf{ko} & \textbf{kz} & \textbf{binary} \\
+                                                        & \textbf{j} & $\textbf{k}_o$ & $\textbf{k}_z$ & \textbf{binary} \\
             \hline
             \phantom{1}82 $\to$ 41  $\to$  124 $\to$ 62 & 20         & 1           & 2           & 10100\_10       \\
             \hline
@@ -275,7 +275,7 @@ Odd numbers always transition 3n + 1 to even numbers, so an odd value can only b
     \end{aligned}
 \]
 
-Whenever transitioning to an even value such that $(\text{even} \% 3 = 1)$, then the previous value could have been either:
+Whenever transitioning to an even value such that $(\text{even}\mod 3 = 1)$, then the previous value could have been either:
 
 \[
     2 \cdot \text{even or } (\text{even} - 1) / 3
@@ -546,7 +546,7 @@ Table \ref{table:entropyOfAContortedHashFunction} illustrates a contorted sequen
 The Collatz sequence incorporates principle mechanisms commonly used to create pseudo random number generators.
 
 \begin{itemize}
-    \item To overcome a contrived Seed, one way hashing smothes out any regularities.
+    \item To overcome a contrived Seed, one way hashing smoothes out any regularities.
     \item Repeated low order one and zero bits are erased at each step.
     \item A product using independent values randomizes values.
 \end{itemize}
